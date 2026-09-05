@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#06080b">
+
+    <title>
+        Kannalli Cricket Tournament
+    </title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+    <header>
+
+        <div class="header-inner">
+
+            <div>
+
+                <h1>
+                    🏏 KANNALLI CRICKET
+                </h1>
+
+                <p>
+                    TOURNAMENT MANAGEMENT SYSTEM
+                </p>
+
+            </div>
+
+            <div class="header-status">
+
+                <span class="live-dot"></span>
+
+                TOURNAMENT
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+     NAVIGATION
+     ===================================================== -->
+
+    <nav class="nav">
+
+        <button onclick="showSection('dashboard')">
+
+            DASHBOARD
+
+        </button>
+
+        <button onclick="showSection('teams')">
+
+            TEAMS
+
+        </button>
+
+        <button onclick="showSection('players')">
+
+            PLAYERS
+
+        </button>
+
+        <button onclick="showSection('tournament')">
+
+            TOURNAMENT
+
+        </button>
+
+        <button onclick="showSection('points')">
+
+            POINTS
+
+        </button>
+
+        <button onclick="showSection('matches')">
+
+            MATCHES
+
+        </button>
+
+        <button onclick="showSection('scoring')">
+
+            LIVE SCORE
+
+        </button>
+
+    </nav>
+
+
+    <main>
+
+
+        <!-- =====================================================
+     DASHBOARD
+     ===================================================== -->
+
+        <section id="dashboard" class="page active">
+
+
+            <div class="hero-card">
+
+                <div>
+
+                    <span class="eyebrow">
+                        KANNALLI
+                    </span>
+
+                    <h2>
+                        Cricket Tournament
+                    </h2>
+
+                    <p>
+                        Complete tournament,
+                        player and live scoring
+                        management system.
+                    </p>
+
+                </div>
+
+                <div class="trophy">
+                    🏆
+                </div>
+
+            </div>
+
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <span>
+                        TEAMS
+                    </span>
+
+                    <strong id="totalTeams">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <span>
+                        PLAYERS
+                    </span>
+
+                    <strong id="totalPlayers">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <span>
+                        DIVISIONS
+                    </span>
+
+                    <strong id="totalDivisions">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <span>
+                        MATCHES
+                    </span>
+
+                    <strong id="totalMatches">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="section-title">
+
+                    <h2>
+                        Tournament Status
+                    </h2>
+
+                    <span class="badge badge-upcoming">
+                        2026
+                    </span>
+
+                </div>
+
+
+                <div class="status-grid">
+
+                    <div class="status-item">
+
+                        <span>
+                            COMPLETED
+                        </span>
+
+                        <strong id="completedMatches">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="status-item">
+
+                        <span>
+                            UPCOMING
+                        </span>
+
+                        <strong id="upcomingMatches">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="status-item">
+
+                        <span>
+                            CHAMPION
+                        </span>
+
+                        <strong id="championName">
+                            TBD
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+     TEAMS
+     ===================================================== -->
+
+        <section id="teams" class="page">
+
+
+            <div class="card">
+
+                <div class="section-title">
+
+                    <h2>
+                        👥 Team Registration
+                    </h2>
+
+                    <span class="badge badge-live">
+                        ADMIN
+                    </span>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <div>
+
+                        <label>
+                            Team Name
+                        </label>
+
+                        <input id="teamName" type="text" placeholder="Kannalli Warriors">
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Captain
+                        </label>
+
+                        <input id="captainName" type="text" placeholder="Captain name">
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Team Short Name
+                        </label>
+
+                        <input id="teamShort" type="text" maxlength="5" placeholder="KW">
+
+                    </div>
+
+
+                </div>
+
+
+                <button class="primary" onclick="addTeam()">
+
+                    + ADD TEAM
+
+                </button>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="section-title">
+
+                    <h2>
+                        Registered Teams
+                    </h2>
+
+                    <span id="teamCounter" class="count-badge">
+
+                        0
+
+                    </span>
+
+                </div>
+
+
+                <div id="teamList" class="team-grid">
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+     PLAYERS
+     ===================================================== -->
+
+        <section id="players" class="page">
+
+
+            <div class="card">
+
+                <div class="section-title">
+
+                    <h2>
+                        🧑 Player Registration
+                    </h2>
+
+                    <span class="badge badge-live">
+                        SQUAD
+                    </span>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <div>
+
+                        <label>
+                            Team
+                        </label>
+
+                        <select id="playerTeam">
+
+                            <option value="">
+                                Select Team
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Player Name
+                        </label>
+
+                        <input id="playerName" type="text" placeholder="Player name">
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Jersey Number
+                        </label>
+
+                        <input id="jerseyNumber" type="number" min="1" max="999" placeholder="18">
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Role
+                        </label>
+
+                        <select id="playerRole">
+
+                            <option>
+                                Batter
+                            </option>
+
+                            <option>
+                                Bowler
+                            </option>
+
+                            <option>
+                                All-Rounder
+                            </option>
+
+                            <option>
+                                Wicketkeeper
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Batting Style
+                        </label>
+
+                        <select id="battingStyle">
+
+                            <option>
+                                Right Hand
+                            </option>
+
+                            <option>
+                                Left Hand
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Bowling Style
+                        </label>
+
+                        <select id="bowlingStyle">
+
+                            <option>
+                                None
+                            </option>
+
+                            <option>
+                                Right Arm Fast
+                            </option>
+
+                            <option>
+                                Right Arm Medium
+                            </option>
+
+                            <option>
+                                Left Arm Fast
+                            </option>
+
+                            <option>
+                                Left Arm Medium
+                            </option>
+
+                            <option>
+                                Right Arm Off Spin
+                            </option>
+
+                            <option>
+                                Right Arm Leg Spin
+                            </option>
+
+                            <option>
+                                Left Arm Orthodox
+                            </option>
+
+                            <option>
+                                Left Arm Chinaman
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                </div>
+
+
+                <button class="primary" onclick="addPlayer()">
+
+                    + ADD PLAYER
+
+                </button>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="section-title">
+
+                    <h2>
+                        Player Statistics
+                    </h2>
+
+                    <span id="playerCounter" class="count-badge">
+
+                        0
+
+                    </span>
+
+                </div>
+
+
+                <div id="playerList" class="player-grid">
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+     TOURNAMENT
+     ===================================================== -->
+
+        <section id="tournament" class="page">
+
+
+            <div class="card">
+
+                <div class="section-title">
+
+                    <h2>
+                        ⚙️ Tournament Setup
+                    </h2>
+
+                    <span class="badge badge-upcoming">
+                        SETUP
+                    </span>
+
+                </div>
+
+
+                <p class="info">
+
+                    Register all teams before generating
+                    the tournament. Automatic mode balances
+                    teams across divisions.
+
+                </p>
+
+
+                <div class="form-grid">
+
+
+                    <div>
+
+                        <label>
+                            Overs Per Match
+                        </label>
+
+                        <input id="matchOvers" type="number" min="1" value="10">
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Division Mode
+                        </label>
+
+                        <select id="divisionMode" onchange="toggleManualDivision()">
+
+                            <option value="auto">
+                                Automatic
+                            </option>
+
+                            <option value="manual">
+                                Manual
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div id="manualDivisionBox" class="hidden">
+
+                        <label>
+                            Number Of Divisions
+                        </label>
+
+                        <input id="divisionCount" type="number" min="1" value="2">
+
+                    </div>
+
+
+                </div>
+
+
+                <button class="primary" onclick="generateTournament()">
+
+                    🏆 GENERATE TOURNAMENT
+
+                </button>
+
+            </div>
+
+
+            <div id="divisionContainer">
+
+            </div>
+
+
+            <div id="knockoutContainer">
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+     POINTS
+     ===================================================== -->
+
+        <section id="points" class="page">
+
+
+            <div class="card">
+
+                <div class="section-title">
+
+                    <h2>
+                        📊 Points Tables
+                    </h2>
+
+                    <span class="badge badge-live">
+                        LIVE
+                    </span>
+
+                </div>
+
+
+                <div id="pointsContainer">
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+     MATCHES
+     ===================================================== -->
+
+        <section id="matches" class="page">
+
+
+            <div class="card">
+
+                <div class="section-title">
+
+                    <h2>
+                        🏏 Fixtures
+                    </h2>
+
+                </div>
+
+
+                <div id="matchContainer">
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+     LIVE SCORING
+     ===================================================== -->
+
+        <section id="scoring" class="page">
+
+
+            <div class="card">
+
+                <div class="section-title">
+
+                    <h2>
+                        🔴 Live Scoring
+                    </h2>
+
+                    <span class="live-indicator">
+                        LIVE
+                    </span>
+
+                </div>
+
+
+                <div id="scoringArea">
+
+                    <div class="empty-state">
+
+                        Select a match from
+                        <b>Matches</b> to begin scoring.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+    <footer>
+
+        <strong>
+            🏏 KANNALLI CRICKET
+        </strong>
+
+        <span>
+            Tournament Management System
+        </span>
+
+    </footer>
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
